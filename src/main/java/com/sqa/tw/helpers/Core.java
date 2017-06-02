@@ -35,6 +35,10 @@ public class Core {
 		return this.log;
 	}
 
+	public String getProp(String propName) {
+		return AutoBasics.getProp(propName, "src/main/resources/", "config.properties", getLog());
+	}
+
 	public void setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
 	}
@@ -52,5 +56,10 @@ public class Core {
 
 	public boolean takeScreenshot(String fileName) {
 		return AutoBasics.takeScreenShot(getDriver(), "screenshots\\", fileName, getLog());
+	}
+
+	public boolean writeProp(String propName, String value) {
+		return AutoBasics.writeProp(propName, value, "Configeration Properties File", "src/main/resources",
+				"config.properties", getLog());
 	}
 }

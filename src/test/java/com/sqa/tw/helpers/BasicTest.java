@@ -13,13 +13,6 @@ public abstract class BasicTest extends Core {
 		super(baseUrl, null);
 	}
 
-	@BeforeClass(enabled = true)
-	public void setUp() throws Exception {
-		setDriver(new FirefoxDriver());
-		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		getDriver().get(getBaseUrl());
-	}
-
 	@BeforeClass(enabled = false)
 	public void setUpChrome() throws Exception {
 		// Set property for specific drivers
@@ -30,6 +23,13 @@ public abstract class BasicTest extends Core {
 		// this.baseUrl = "http://www.ebay.com/";
 		// Set any properties for the driver, such as setting an implicit wait
 		// for 30 seconds
+		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		getDriver().get(getBaseUrl());
+	}
+
+	@BeforeClass(enabled = true)
+	public void setUpFirefox() throws Exception {
+		setDriver(new FirefoxDriver());
 		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		getDriver().get(getBaseUrl());
 	}
